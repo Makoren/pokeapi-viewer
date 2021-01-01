@@ -107,7 +107,7 @@ struct Species: Codable {
 }
 
 // Sprites
-struct SpriteData {
+struct SpriteData: Codable {
     let backDefault: String?
     let backFemale: String?
     let backShiny: String?
@@ -274,4 +274,86 @@ struct BlackWhiteSprites: Codable {
     let frontFemale: String?
     let frontShiny: String?
     let frontShinyFemale: String?
+}
+
+struct AnimatedBlackWhiteSprites: Codable {
+    let backDefault: String?
+    let backFemale: String?
+    let backShiny: String?
+    let backShinyFemale: String?
+    let frontDefault: String?
+    let frontFemale: String?
+    let frontShiny: String?
+    let frontShinyFemale: String?
+}
+
+// Gen 6
+struct GenVISprites: Codable {
+    let omegarubyAlphasapphire: OmegarubyAlphasapphireSprites
+    let xY: XYSprites
+}
+
+struct OmegarubyAlphasapphireSprites: Codable {
+    let frontDefault: String?
+    let frontFemale: String?
+    let frontShiny: String?
+    let frontShinyFemale: String?
+}
+
+struct XYSprites: Codable {
+    let frontDefault: String?
+    let frontFemale: String?
+    let frontShiny: String?
+    let frontShinyFemale: String?
+}
+
+// Gen 7
+struct GenVIISprites: Codable {
+    let icons: GenVIIIcons
+    let ultraSunUltraMoon: UltrasunUltramoonSprites
+}
+
+struct GenVIIIcons: Codable {
+    let frontDefault: String?
+    let frontFemale: String?
+}
+
+struct UltrasunUltramoonSprites: Codable {
+    let frontDefault: String?
+    let frontFemale: String?
+    let frontShiny: String?
+    let frontShinyFemale: String?
+}
+
+// Gen 8
+struct GenVIIISprites: Codable {
+    let icons: GenVIIIIcons
+}
+
+struct GenVIIIIcons: Codable {
+    let frontDefault: String?
+    let frontFemale: String?
+}
+
+// Stats
+struct Stat: Codable {
+    let baseStat: Int
+    let effort: Int
+    let stat: StatDetail
+}
+
+struct StatDetail: Codable {
+    let name: String
+    let url: String
+}
+
+// Types
+struct Type: Codable {
+    let slot: Int
+    let type: TypeDetail
+}
+
+struct TypeDetail: Codable {
+    let name: String
+    let url: String
 }
