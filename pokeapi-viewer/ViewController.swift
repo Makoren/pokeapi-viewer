@@ -24,12 +24,13 @@ class ViewController: UIViewController {
         var urlString = "https://pokeapi.co/api/v2/pokemon/"
         
         guard let text = textField.text else { return }
+        guard !text.isEmpty else { return }
         urlString.append(text)
         
         URLSession.shared.dataTask(with: URL(string: urlString)!) { (data, response, error) in
             
             guard let data = data else {
-                fatalError("Error: \(error?.localizedDescription ?? "No error provided")")
+                fatalError("\(error?.localizedDescription ?? "No error provided")")
             }
             
             // Convert from JSON using SwiftyJSON
@@ -51,7 +52,7 @@ class ViewController: UIViewController {
         URLSession.shared.dataTask(with: URL(string: url)!) { (data, response, error) in
             
             guard let imageData = data else {
-                fatalError("Error: \(error?.localizedDescription ?? "No error provided")")
+                fatalError("\(error?.localizedDescription ?? "No error provided")")
             }
             self.pokemonImage = UIImage(data: imageData)
             

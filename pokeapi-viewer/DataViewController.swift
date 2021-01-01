@@ -33,7 +33,13 @@ class DataViewController: UIViewController {
         nameLabel.text = pokemonData["name"].rawString()
         imageView.image = pokemonImage
         
-        typeLabel.text = pokemonData["types"][0]["type"]["name"].rawString()
+        var fullString = ""
+        for type in pokemonData["types"].arrayValue {
+            fullString.append(type["type"]["name"].rawString()! + "/")
+        }
+        fullString.removeLast()
+        typeLabel.text = fullString
+        
         abilitiesLabel.text = pokemonData["abilities"][0]["ability"]["name"].rawString()
         canLearnLabel.text = pokemonData["moves"][0]["move"]["name"].rawString()
     }
