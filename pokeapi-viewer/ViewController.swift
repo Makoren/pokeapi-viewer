@@ -12,7 +12,8 @@ class ViewController: UIViewController {
 
     @IBOutlet weak var textField: UITextField!
     
-    var responseData: Data?
+    var parsedJson: JSON?
+    var pokemonImage: UIImage?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,35 +26,47 @@ class ViewController: UIViewController {
         guard let text = textField.text else { return }
         urlString.append(text)
         
-        let url = URL(string: urlString)!
-        let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
+        URLSession.shared.dataTask(with: URL(string: urlString)!) { (data, response, error) in
             
             guard let data = data else {
                 fatalError("Error: \(error?.localizedDescription ?? "No error provided")")
             }
             
-            self.responseData = data
-            
             // Convert from JSON using SwiftyJSON
             do {
-                let json = try JSON(data: data)
-                print(json["abilities"][0]["ability"]["name"])
+                self.parsedJson = try JSON(data: data)
+                let json = self.parsedJson!
+                
+                if let imageUrl = json["sprites"]["front_default"].rawString() {
+                    self.fetchPokemonImage(url: imageUrl)
+                }
             } catch {
                 print(error.localizedDescription)
             }
             
+        }.resume()
+    }
+    
+    func fetchPokemonImage(url: String) {
+        URLSession.shared.dataTask(with: URL(string: url)!) { (data, response, error) in
+            
+            guard let imageData = data else {
+                fatalError("Error: \(error?.localizedDescription ?? "No error provided")")
+            }
+            self.pokemonImage = UIImage(data: imageData)
             
             DispatchQueue.main.async {
                 self.performSegue(withIdentifier: "dataViewer", sender: nil)
             }
-        }
-        
-        task.resume()
+            
+        }.resume()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let dvc = segue.destination as? DataViewController {
-            // pass properties to this controller
+            // previous validation means parsedJson cannot be nil here, safe to force unwrap
+            dvc.jsonData = parsedJson!
+            dvc.pokemonImage = pokemonImage
         }
     }
     
