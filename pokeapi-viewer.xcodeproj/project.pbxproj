@@ -14,6 +14,7 @@
 		24BC390D259E81FB004AC3AD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 24BC390C259E81FB004AC3AD /* Assets.xcassets */; };
 		24BC3910259E81FB004AC3AD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 24BC390E259E81FB004AC3AD /* LaunchScreen.storyboard */; };
 		24BC391B259E994B004AC3AD /* DataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24BC391A259E994B004AC3AD /* DataViewController.swift */; };
+		24BC391E259EA004004AC3AD /* Pokemon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24BC391D259EA004004AC3AD /* Pokemon.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		24BC390F259E81FB004AC3AD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		24BC3911259E81FB004AC3AD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		24BC391A259E994B004AC3AD /* DataViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataViewController.swift; sourceTree = "<group>"; };
+		24BC391D259EA004004AC3AD /* Pokemon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pokemon.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +68,7 @@
 				24BC390E259E81FB004AC3AD /* LaunchScreen.storyboard */,
 				24BC3911259E81FB004AC3AD /* Info.plist */,
 				24BC391A259E994B004AC3AD /* DataViewController.swift */,
+				24BC391D259EA004004AC3AD /* Pokemon.swift */,
 			);
 			path = "pokeapi-viewer";
 			sourceTree = "<group>";
@@ -140,6 +143,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				24BC391E259EA004004AC3AD /* Pokemon.swift in Sources */,
 				24BC391B259E994B004AC3AD /* DataViewController.swift in Sources */,
 				24BC3908259E81FA004AC3AD /* ViewController.swift in Sources */,
 				24BC3904259E81FA004AC3AD /* AppDelegate.swift in Sources */,
