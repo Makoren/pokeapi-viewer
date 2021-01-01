@@ -12,7 +12,7 @@
         <!--View Controller-->
         <scene sceneID="mfA-Xy-eOt">
             <objects>
-                <viewController id="Kre-yc-Udn" sceneMemberID="viewController">
+                <viewController id="Kre-yc-Udn" customClass="ViewController" customModule="pokeapi_viewer" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="IJE-9b-xGY">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -35,7 +35,7 @@
                                         <rect key="frame" x="0.0" y="70.5" width="200" height="30"/>
                                         <state key="normal" title="Search"/>
                                         <connections>
-                                            <segue destination="Wl3-Rw-9JI" kind="show" id="gOG-wF-Xpv"/>
+                                            <action selector="searchButtonPressed:" destination="Kre-yc-Udn" eventType="touchUpInside" id="MzB-W3-kgr"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -52,6 +52,10 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="4Zz-U7-kaW"/>
+                    <connections>
+                        <outlet property="textField" destination="XM8-uE-kNF" id="hC2-ec-wdo"/>
+                        <segue destination="Wl3-Rw-9JI" kind="show" identifier="dataViewer" id="VPz-Hi-u62"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x8b-wA-5ye" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -73,10 +77,10 @@
             </objects>
             <point key="canvasLocation" x="777" y="278"/>
         </scene>
-        <!--View Controller-->
+        <!--Data View Controller-->
         <scene sceneID="5hK-6C-rnQ">
             <objects>
-                <viewController id="Wl3-Rw-9JI" sceneMemberID="viewController">
+                <viewController id="Wl3-Rw-9JI" customClass="DataViewController" customModule="pokeapi_viewer" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="9Nz-hl-UgO">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
