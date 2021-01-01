@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SwiftyJSON
 
 class ViewController: UIViewController {
 
@@ -33,6 +34,15 @@ class ViewController: UIViewController {
             
             self.responseData = data
             
+            // Convert from JSON using SwiftyJSON
+            do {
+                let json = try JSON(data: data)
+                print(json["abilities"][0]["ability"]["name"])
+            } catch {
+                print(error.localizedDescription)
+            }
+            
+            
             DispatchQueue.main.async {
                 self.performSegue(withIdentifier: "dataViewer", sender: nil)
             }
@@ -44,9 +54,6 @@ class ViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let dvc = segue.destination as? DataViewController {
             // pass properties to this controller
-            if let data = responseData {
-                print(String(data: data, encoding: .utf8)!)
-            }
         }
     }
     
